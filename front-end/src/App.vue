@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <header class="app-header" v-if="!isAuthPage">
+    <div v-if="message" class="notification">{{ message }}</div>
+    <header class="app-header" v-if="!isAuthPage">      
       <h1>{{ $t('title') }}</h1>
       <div v-if="isLoggedIn" class="header-controls">
         <div class="lang-select">
@@ -33,7 +34,8 @@ export default {
     return {
       selectedLang: this.$i18n.locale,
       selectedRoute: '/',
-      isLogged: !!localStorage.getItem('token')
+      isLogged: !!localStorage.getItem('token'),
+      message: ''
     };
   },
   created() {
@@ -43,6 +45,12 @@ export default {
     this.$root.$on('logout', () => {
       this.isLogged = false;
     });
+      this.$root.$on('showMessage', msg => {
+    this.message = msg;
+    setTimeout(() => {
+      this.message = '';
+    }, 3000);
+  });
   },
   computed: {
     isLoggedIn() {
