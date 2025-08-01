@@ -1,7 +1,12 @@
 <template>
   <div>
     <h2>{{ $t('editBook') }}</h2>
-    <WordForm v-if="book" :book="book" :submitText="$t('submit')" v-on:submit="updateBook" />
+    <WordForm
+      v-if="book"
+      :book="book"
+      :submitText="$t('submit')"
+      v-on:submit="updateBook"
+    />
   </div>
 </template>
 
@@ -17,13 +22,24 @@ export default {
     };
   },
   async created() {
-    const res = await axios.get(`http://localhost:3000/api/books/${this.$route.params.id}`);
-    this.book = res.data;
+    try {
+      const res = await axios.get(`http://localhost:3000/api/books/${this.$route.params.id}`);
+      this.book = res.data;
+    } catch (err) {
+      this.$root.$emit('showMessage', this.$t('loadFail'));
+      console.error(err);
+    }
   },
   methods: {
     async updateBook(updatedData) {
-      await axios.put(`http://localhost:3000/api/books/${this.$route.params.id}`, updatedData);
-      this.$router.push('/');
+      try {
+        await axios.put(`http://localhost:3000/api/books/${this.$route.params.id}`, updatedData);
+        this.$root.$emit('showMessage', this.$t('updateSuccess'));
+        this.$router.push('/');
+      } catch (err) {
+        this.$root.$emit('showMessage', this.$t('updateFail'));
+        console.error(err);
+      }
     }
   }
 };
