@@ -13,8 +13,14 @@ export default {
   components: { WordForm },
   methods: {
     async createBook(bookData) {
-      await axios.post('http://localhost:3000/api/books', bookData);
-      this.$router.push('/');
+      try {
+        await axios.post('http://localhost:3000/api/books', bookData);
+        this.$root.$emit('showMessage', this.$t('createSuccess')); 
+        this.$router.push('/');
+      } catch (err) {
+        this.$root.$emit('showMessage', this.$t('createFail')); 
+        console.error(err);
+      }
     }
   }
 };
