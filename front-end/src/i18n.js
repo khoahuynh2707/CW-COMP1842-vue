@@ -78,7 +78,7 @@ const messages = {
 };
 
 export default new VueI18n({
-  locale: 'vi',           
-  fallbackLocale: 'en',  
+  locale: 'en',           
+  fallbackLocale: 'vi',  
   messages
 });

@@ -5,8 +5,8 @@
       <div v-if="isLoggedIn" class="header-controls">
         <div class="lang-select">
           <select v-model="selectedLang" v-on:change="changeLocale">
-            <option value="vi">Tiếng Việt</option>
             <option value="en">English</option>
+            <option value="vi">Tiếng Việt</option>       
             <option value="ja">Japan</option>
           </select>
         </div>

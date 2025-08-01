@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
 
-    // Tạo token JWT
+    // Create token JWT
     const token = jwt.sign({ id: user._id, username: user.username }, 'SECRET_KEY', {
       expiresIn: '1h'
     });

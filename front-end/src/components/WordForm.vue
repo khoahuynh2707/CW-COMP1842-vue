@@ -34,7 +34,7 @@ export default {
     },
     submitText: {
       type: String,
-      default: 'Lưu'
+      default: 'Save'
     }
   },
   data() {
