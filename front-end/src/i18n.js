@@ -24,7 +24,12 @@ const messages = {
     editBook: 'Chỉnh sửa sách',
     details: 'Chi tiết sách',
     noBooks: 'Không có sách nào phù hợp.',
-    totalBooks: 'Tổng số sách'
+    totalBooks: 'Tổng số sách',
+    createSuccess: "Tạo sách thành công!",
+    createFail: "Tạo sách thất bại!",
+    updateSuccess: "Cập nhật sách thành công!",
+    updateFail: "Cập nhật sách thất bại!",
+    loadFail: "Không thể tải dữ liệu sách!"
   },
   en: {
     Login: 'Welcome to CRUD Web',
@@ -51,7 +56,12 @@ const messages = {
     password: 'Password',
     login: 'Login',
     register: 'Register',
-    noAccount: 'Don\'t have an account?'
+    noAccount: 'Don\'t have an account?',
+    createSuccess: "create Success!",
+    createFail: "create Fail!",
+    updateSuccess: "Update Success!",
+    updateFail: "Update Fail!",
+    loadFail: "Load Fail!"
   },
   ja: {
     Login: 'CRUD Webへようこそ',
